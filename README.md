@@ -2,7 +2,7 @@
 
 A browser-based logic circuit simulator and visualizer. Write circuits in a custom HDL (Hardware Description Language), compile them in real time, and see the schematic rendered as an interactive SVG diagram.
 
-Built with React, TypeScript, Vite, and Tailwind CSS. Runs entirely in the browser with no backend.
+Built with React, TypeScript, Vite, and Tailwind CSS. The core simulator runs in the browser, with a local FastAPI service for AI-powered image-to-HDL conversion.
 
 ![Dark Theme](public/sc-temaoscuro.png)
 
@@ -23,11 +23,35 @@ Built with React, TypeScript, Vite, and Tailwind CSS. Runs entirely in the brows
 - Dark and light themes with iOS-inspired rounded panel design
 - Export to SVG, PNG (3x resolution), and PDF
 - Boolean expression to HDL converter
-- Image-to-HDL scanner (schematic recognition prototype)
+- AI-powered Image-to-HDL scanner using a local vision model
 - Configurable layout dimensions (node sizes, spacing, per-node overrides)
 
 ---
+## 👨‍💻 My Contribution
 
+I contributed to the development of CircuitBreve by integrating a local AI system for circuit image analysis and HDL generation.
+
+The integration uses FastAPI, Ollama, and the MiniCPM-V vision model to analyze circuit diagrams and generate HDL code compatible with the simulator.
+
+### AI Image-to-HDL Pipeline
+
+```text
+Circuit Image
+      ↓
+FastAPI
+      ↓
+Ollama + MiniCPM-V
+      ↓
+Circuit Analysis
+      ↓
+HDL Code Generation
+      ↓
+CircuitBreve
+```
+
+The AI service receives a circuit image through the `/scan-circuit` endpoint, analyzes the logic gates, inputs, outputs, and connections, and returns the generated HDL code.
+
+---
 ## Getting Started
 
 ```bash
